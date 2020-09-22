@@ -75,15 +75,15 @@ class Client(object):
         else:
             raise APIError(response)
 
-    def list_spreadsheet_files(self, title=None):
+    def list_spreadsheet_files(self, title=None, folder_id=None):
         files = []
         page_token = ''
         url = DRIVE_FILES_API_V3_URL
-
         q = 'mimeType="application/vnd.google-apps.spreadsheet"'
         if title:
             q += ' and name = "{}"'.format(title)
-
+        if drive_id:
+            q += f' and "{folder_id}" in parents'
         params = {
             'q': q,
             'pageSize': 1000,
