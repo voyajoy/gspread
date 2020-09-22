@@ -82,7 +82,7 @@ class Client(object):
         q = 'mimeType="application/vnd.google-apps.spreadsheet"'
         if title:
             q += ' and name = "{}"'.format(title)
-        if drive_id:
+        if folder_id:
             q += f' and "{folder_id}" in parents'
         params = {
             'q': q,
